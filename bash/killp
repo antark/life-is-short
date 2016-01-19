@@ -1,0 +1,12 @@
+#!/bin/bash
+if [ $# -lt 1 ]; then
+    echo "help: killp <process name>"
+    exit
+fi
+
+pids=`ps aux | grep -v grep | grep -v killp | grep $1 | awk '{print $2}'`
+
+for pid in $pids ; do
+    echo "process $1: kill -9 $pid"
+    kill -9 $pid
+done
