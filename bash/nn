@@ -1,0 +1,18 @@
+#!/usr/bin/awk -f
+BEGIN{
+    if(ARGC < 3){
+    	print "error. usage: nn 10 date"
+    	exit
+    }
+    
+    times = ARGV[1]
+    cmd = ARGV[2]
+    for(i = 3; i < ARGC; ++i){
+    	cmd = cmd " " ARGV[i]
+    }
+    for (i = 0; i < times; ++i){
+        system(cmd)
+        system("sleep 1")
+    }
+    exit
+}
