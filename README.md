@@ -8,5 +8,5 @@
 
 ####bash demo
 <sup><sub>1. [killp 实现](https://github.com/antark/life-is-short/blob/master/bash/killp)：根据进程名kill进程</sub></sup><br/>
-
+<sup><sub>2. [nn 实现](https://github.com/antark/life-is-short/blob/master/bash/nn)：循环执行一个命令n次</sub></sup><br/>
 
