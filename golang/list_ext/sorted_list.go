@@ -7,21 +7,21 @@ import (
 )
 
 type SortedList struct {
-	Value *list.List
-	data  []*list.Element
-	Cmp   func(a, b *interface{}) bool
+	list *list.List
+	data []*list.Element
+	cmp  func(a, b *interface{}) bool
 }
 
-func (slist *SortedList) Init() {
-	for ele := slist.Value.Front(); ele != nil; ele = ele.Next() {
+func (slist *SortedList) init() {
+	for ele := slist.list.Front(); ele != nil; ele = ele.Next() {
 		slist.data = append(slist.data, ele)
 	}
 }
 
-func (slist *SortedList) Post() {
-	slist.Value.Init()
+func (slist *SortedList) post() {
+	slist.list.Init()
 	for _, value := range slist.data {
-		slist.Value.PushBack(value.Value)
+		slist.list.PushBack(value.Value)
 	}
 }
 
@@ -34,15 +34,18 @@ func (slist SortedList) Swap(i, j int) {
 }
 
 func (slist SortedList) Less(i, j int) bool {
-	return slist.Cmp(&slist.data[i].Value, &slist.data[j].Value)
+	return slist.cmp(&slist.data[i].Value, &slist.data[j].Value)
 }
 
 func SortList(data *list.List, cmp func(a, b *interface{}) bool) {
-	if data == nil || cmp == nil {
-		panic("error: input list is nil, or cmp is nil")
+	if data == nil {
+		panic("error: input list is nil")
 	}
-	var slist SortedList = SortedList{Value: data, Cmp: cmp}
-	slist.Init()
+	if cmp == nil {
+		panic("error: cmp is nil")
+	}
+	var slist SortedList = SortedList{list: data, cmp: cmp}
+	slist.init()
 	sort.Sort(slist)
-	slist.Post()
+	slist.post()
 }
