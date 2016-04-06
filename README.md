@@ -1,5 +1,6 @@
 ####golang demo
 <sup><sub>1. [list排序](https://github.com/antark/life-is-short/blob/master/golang/list_ext/sorted_list.go)</sub></sup><br/>
+<sup><sub>2. [time的解析以及格式化支持yyyyMMddHHmmss格式](https://github.com/antark/life-is-short/blob/master/golang/time_ext/format.go)</sub></sup><br/>
 
 ####c++ demo
 
